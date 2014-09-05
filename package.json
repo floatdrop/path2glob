@@ -1,6 +1,6 @@
 {
   "name": "path2glob",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Get best matching glob from globs array for given path",
   "main": "index.js",
   "directories": {
