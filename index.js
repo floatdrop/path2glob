@@ -1,5 +1,6 @@
 'use strict';
 
+var resolve = require('path').resolve;
 var Glob = require('glob').Glob;
 
 function isNegative(pattern) {
@@ -27,9 +28,16 @@ module.exports = function (path, globs, opts) {
 
     if (!Array.isArray(globs)) throw new Error('globs should be Array of strings');
 
+    opts = opts || {};
+    opts.cwd = opts.cwd || process.cwd();
+
+    function toGlob(glob) {
+        return new Glob(resolve(opts.cwd, glob), opts);
+    }
+
     globs = globs
                 .filter(isPositive)
-                .map(Glob)
+                .map(toGlob)
                 .filter(isMatching(path));
 
     if (globs.length === 1) { return globs[0]; }
