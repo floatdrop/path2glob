@@ -2,7 +2,7 @@
 
 var path = require('path');
 var path2glob = require('..');
-require('should');
+var should = require('should');
 
 function p(ath) {
     return path.join(__dirname, ath);
@@ -38,5 +38,14 @@ describe('path2glob', function () {
             path.join(__dirname, 'subfolder/1/2.txt'),
             [ 'test/subfolder/**/*' ]
         ).minimatch.pattern.should.eql(path.join(__dirname, 'subfolder/**/*'));
+    });
+
+    it.only('should match on directory', function () {
+        var result = path2glob(
+            p('app/node_modules/'),
+            [ p('app/**') ]
+        );
+        should.exist(result);
+        result.minimatch.pattern.should.eql(path.join(__dirname, 'app/**'));
     });
 });
