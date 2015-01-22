@@ -2,6 +2,8 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
+__Deprecated: use [anymatch](https://github.com/es128/anymatch) for this__
+
 Get best matching glob from globs array for given path.
 
 > __Tip__: negatives will be filtered
